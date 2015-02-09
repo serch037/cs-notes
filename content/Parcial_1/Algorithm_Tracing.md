@@ -31,11 +31,11 @@ my_array[index--] = temp;
     * Variables & their purpose: _size_: Self-explanatory; *temp*: Aids in swap operation; _x_: For loop counter. 
 * State of the variables at end of each loop:
 
-| x | temp | my_array[]  | index |
-| - | -    | ------      | -     |
-| 0 | 1    | 6,2,3,4,5,1 | 5     |
-| 1 | 2    | 6,5,3,4,2,1 | 4     |
-| 2 | 3    | 6,5,4,3,2,1 | 3     |
+| x Variable | temp Variable | my_array[] Contents | index Variable |
+| :---       | ----:         | ----------:         | --:            |
+| 0;         | 1;            | 6,2,3,4,5,1         | 5              |
+| 1;         | 2;            | 6,5,3,4,2,1         | 4              |
+| 2;         | 3;            | 6,5,4,3,2,1         | 3              |
 
 
 * Final & initial state of the array:
@@ -46,3 +46,10 @@ my_array[index--] = temp;
 
 ## Conclusion
 
+| Left-Aligned  | Center Aligned  | Right Aligned |
+| :------------ |:---------------:| -----:|
+| col 3 is      | some wordy text | $1600 |
+| col 2 is      | centered        |   $12 |
+| zebra stripes | are neat        |    $1 |
+
+sd
