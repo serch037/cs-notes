@@ -31,4 +31,4 @@ STATIC_PATHS = ['images']
 TYPOGRIFY = True
 MD_EXTENSIONS =  [ 'toc', 'codehilite','extra']
 HIDE_DATE = True
-THEME = "/home/sergio/pelican-themes/pelican-bootstrap3/"
+THEME = "/home/sergio/pelican-themes/pelican-bootstrap3"
