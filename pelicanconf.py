@@ -29,6 +29,7 @@ DEFAULT_PAGINATION = 10
 RELATIVE_URLS = True
 STATIC_PATHS = ['images']
 TYPOGRIFY = True
-MD_EXTENSIONS =  [ 'toc', 'codehilite','extra']
+MD_EXTENSIONS =  ['toc','fenced_code', 'codehilite(css_class=highlight)','extra','tables','smartypants', 'pipe_tables']
+PYGMENTS_RST_OPTIONS = {'classprefix': 'pgcss', 'linenos': 'table'}
 HIDE_DATE = True
 THEME = "/usr/lib/python3.4/site-packages/pelican/themes/pelican-bootstrap3/"
