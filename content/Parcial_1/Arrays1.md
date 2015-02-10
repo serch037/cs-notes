@@ -3,10 +3,10 @@ Date: 2015-02-08
 Modified: 2015-02-08
 Tags: Arrays, Fourth_Semester
 
-# Definition
+### Definition
 Arrays are a type of __data structure__ that store information in a collection, using _keys_ or _indexes_. One dimensional arrays consist of a linear sequence of data
 
-# Essential operations
+### Essential operations
 * Statement & Assignment
 * Swapping
     * Requires an additional variable
@@ -17,11 +17,11 @@ Arrays are a type of __data structure__ that store information in a collection, 
 * Bubble sorting
 * 
 
-# C-like Syntax
+#### C-like Syntax
 
 ~~~~c
 // Note: Coded as functions for convenience
 ~~~~
 
-# Additional Resources
+### Additional Resources
 

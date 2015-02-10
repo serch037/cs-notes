@@ -4,10 +4,10 @@ Modified: 2015-02-08
 Tags: Algorithms, Fourth_Semester
 
 
-## Definition 
+### Definition 
 This refers to a step-by-step analysis of what a computational calculation performs. By making it explicit what is executed in the program and how the variables included are affected in each execution cycle. 
 
-## Example
+### Example
 The following example, coded in (*ref*) C, illustrates the tracing of reversing the contents on an (ref) Array:
 
 Code:
@@ -25,7 +25,7 @@ my_array[index--] = temp;
 }
 ~~~~
 
-## Tracing:
+### Tracing:
 * General Information:
     * Times the loop runs: 3
     * Variables & their purpose: _size_: Self-explanatory; *temp*: Aids in swap operation; _x_: For loop counter. 
@@ -44,7 +44,7 @@ my_array[index--] = temp;
 {1,2,3,4,5,6} becomes {6,5,4,3,2,1}
 ~~~~
 
-## Conclusion
+### Conclusion
 
 | Left-Aligned  | Center Aligned  | Right Aligned |
 | :------------ |:---------------:| -----:|
