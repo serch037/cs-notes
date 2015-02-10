@@ -22,6 +22,8 @@ AUTHOR_FEED_RSS = None
 # Blogroll
 
 # Social widget
+SOCIAL = (('facebook','https://www.facebook.com/profile.php?id=100001791786184'),
+          ('github','https://github.com/serch037'),)
 
 DEFAULT_PAGINATION = 10
 
