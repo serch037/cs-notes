@@ -8,7 +8,8 @@ Tags: Algorithms, Fourth_Semester
 This refers to a step-by-step analysis of what a computational calculation performs. By making it explicit what is executed in the program and how the variables included are affected in each execution cycle. 
 
 ### Example
-The following example, coded in (*ref*) C, illustrates the tracing of reversing the contents on an (ref) Array:
+The following example, coded in [C]({filename}Cbasics.md), illustrates the tracing of reversing the contents on an [Array]({filename}Arrays1.md).
+
 
 Code:
 
@@ -43,13 +44,3 @@ my_array[index--] = temp;
 ~~~~python
 {1,2,3,4,5,6} becomes {6,5,4,3,2,1}
 ~~~~
-
-### Conclusion
-
-| Left-Aligned  | Center Aligned  | Right Aligned |
-| :------------ |:---------------:| -----:|
-| col 3 is      | some wordy text | $1600 |
-| col 2 is      | centered        |   $12 |
-| zebra stripes | are neat        |    $1 |
-
-sd

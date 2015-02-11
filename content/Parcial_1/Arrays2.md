@@ -3,4 +3,26 @@ Date: 2015-02-08
 Tags: Arrays, Fourth_Semester
 
 ### Definition
-In a fundamental way, two dimensional arrays are rather similar two one dimentional arrays 
+In a fundamental way, two dimensional arrays are rather similar two one dimentional arrays, as the processor treats it as an _extended_ one dimensional array. For the user, however, the net effect is effectively different. Two dimensional arrays are best represented, by a two dimensional matrix of information. However, the notion of an array of arrays is also valid, and, as a matter of fact, useful for grasping the concept of its syntax and declaration. 
+
+### Essential operations
+* Declaration and assignment
+* Loop
+
+
+#### C-like syntax
+
+~~~~c
+// Declaration
+int an_array[3][2] = { 
+    {1,2},
+    {4,5},
+    {7,8},
+}
+// When used as function argument, its size must be given first.
+int an_arrayFunction(int sizex, sizey, anrray[sizey][sizex]);
+
+~~~~
+
+### Additional resources
+
