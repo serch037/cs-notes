@@ -35,3 +35,4 @@ MD_EXTENSIONS =  ['toc','fenced_code', 'codehilite(css_class=highlight)','extra'
 PYGMENTS_RST_OPTIONS = {'classprefix': 'pgcss', 'linenos': 'table'}
 HIDE_DATE = True
 THEME = "/usr/lib/python3.4/site-packages/pelican/themes/pelican-bootstrap3/"
+PYGMENTS_STYLE='friendly'

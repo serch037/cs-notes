@@ -12,15 +12,22 @@ Arrays are a type of __data structure__ that store information in a collection, 
     * Requires an additional variable
     * Three stepped process
     * Used in many different algorithms
-* Cirular ... 
+* Cirular shifting
+    * Displacing the array by n places
 * Reversing
 * Bubble sorting
+    * The simplest sorting algorithm compares adjacent values until all values satisfy the specified conditions
 
 #### C-like Syntax
 
 ~~~~c
-// Note: Coded as functions for convenience
+//Declaration and statement
+type an_array[THE_SIZE] = {SOME_VARIABLES};
+
 ~~~~
 
 ### Additional Resources
+[Variable Sized Arrays in C](https://gcc.gnu.org/onlinedocs/gcc/Variable-Length.html)
+
+
 

@@ -7,8 +7,9 @@ In a fundamental way, two dimensional arrays are rather similar two one dimentio
 
 ### Essential operations
 * Declaration and assignment
-* Loop
-
+* Looping 
+    * Requires two indexes and loops
+* Vertical and/or horizontal rotation
 
 #### C-like syntax
 
@@ -25,4 +26,10 @@ int an_arrayFunction(int sizex, sizey, anrray[sizey][sizex]);
 ~~~~
 
 ### Additional resources
+
+#### Graphics
+[Midpoing line algorithm](http://www.mat.univie.ac.at/~kriegl/Skripten/CG/node25.html)
+[Midpoint cirle algorithm](http://www.asksatyam.com/2011/01/midpoint-circle-algorithm.html)
+
+
 
