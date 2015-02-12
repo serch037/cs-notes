@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="./theme/css/bootstrap.min.css" type="text/css"/>
     <link href="./theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="./theme/css/pygments/native.css" rel="stylesheet">
+    <link href="./theme/css/pygments/friendly.css" rel="stylesheet">
         <link href="./theme/css/typogrify.css" rel="stylesheet">
     <link rel="stylesheet" href="./theme/css/style.css" type="text/css"/>
 
@@ -102,19 +102,26 @@ Computer Science Notes            </a>
                 </div>
                 <h3 id="definition">Definition</h3>
 <p>A function is a very useful programming concept, as it relates to the modular nature of problem solving in the computer sciences. It may be stated as a <em>subprogram</em> which inside the <em>main</em> statements, processes information. On a basic level, it saves programmers its time by preventing them from repeating the same lines of code for similar or even identical tasks. As a matter of fact, most programming languages include a core library (which is a collection of functions) so programmers are not required to write code for the most common tasks, such as getting the size of an array, or printing a&nbsp;value.  </p>
-<p>Some functions yield a result of the process they carry out, this process is known as <em>returning</em> a&nbsp;value.</p>
+<p>Some functions yield a result of the process they carry out, this process is known as <em>returning</em> a value if they do not return any value, they may be known as void&nbsp;functions.</p>
 <p>Note: Functions are known by distinct names in different programming languages, the most common alternatives are methods, subroutines, both of which are essentially the&nbsp;same. </p>
-<h4 id="when-to-use-them-and-when-not-to">When to use them and when not&nbsp;to</h4>
+<p><strong>Use them for repetitive tasks possibly implementing a&nbsp;library.</strong> </p>
 <h4 id="c-like-syntax">C-like&nbsp;syntax</h4>
 <div class="highlight"><pre><span class="c1">// In languages such as C, the standard is to declare functions</span>
 <span class="c1">// before using them. This is called function prototyping.</span>
 <span class="c1">// Example: </span>
 <span class="kt">int</span> <span class="nf">aFunction</span><span class="p">(</span> <span class="kt">int</span><span class="p">,</span> <span class="n">some_parameters</span><span class="p">);</span> 
+
+<span class="c1">//more code</span>
+
+<span class="n">Calling</span> <span class="n">the</span> <span class="n">function</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">aFunction</span><span class="p">(</span><span class="n">The_parameters</span><span class="p">);</span>
+
+<span class="c1">// Declaration</span>
+<span class="kt">int</span> <span class="nf">aFunction</span><span class="p">(</span> <span class="kt">int</span><span class="p">,</span> <span class="n">some_parameters</span><span class="p">){</span>
+<span class="c1">//Data processing</span>
+<span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
-
-
-<h3 id="examples">Examples</h3>
-<h3 id="additional-resources">Additional&nbsp;Resources</h3>
             </div>
             <!-- /.entry-content -->
         </article>
