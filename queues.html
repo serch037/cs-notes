@@ -2,7 +2,7 @@
 <html lang="en"
 >
 <head>
-    <title>Algorithm Tracing - Computer Science Notes</title>
+    <title>Queues - Computer Science Notes</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,11 +10,11 @@
 
 
 
-<link rel="canonical" href="/algorithm-tracing.html">
+<link rel="canonical" href="/queues.html">
 
         <meta name="author" content="Sergio Ugalde Marcano" />
-        <meta name="keywords" content="Algorithms,Fourth_Semester" />
-        <meta name="description" content="Definition This refers to a step-by-step analysis of what a computational calculation performs. By making it explicit what is executed in the program and how the variables included are affected in each execution cycle. Example The following example, coded in C, illustrates the tracing of reversing the contents on an ..." />
+        <meta name="keywords" content="Fourth_Semester" />
+        <meta name="description" content="A queue is a FIFO data structure." />
 
     <!-- Enable latex plugin -->
 
@@ -33,8 +33,8 @@
               title="Computer Science Notes ATOM Feed"/>
 
 
-        <link href="/feeds/parcial_1.atom.xml" type="application/atom+xml" rel="alternate"
-              title="Computer Science Notes Parcial_1 ATOM Feed"/>
+        <link href="/feeds/parcial_2.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Computer Science Notes Parcial_2 ATOM Feed"/>
 
 </head>
 <body>
@@ -56,10 +56,10 @@ Computer Science Notes            </a>
                          <li><a href="/pages/about.html">
                              About
                           </a></li>
-                        <li class="active">
+                        <li >
                             <a href="/category/parcial_1.html">Parcial_1</a>
                         </li>
-                        <li >
+                        <li class="active">
                             <a href="/category/parcial_2.html">Parcial_2</a>
                         </li>
             </ul>
@@ -79,10 +79,10 @@ Computer Science Notes            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="/algorithm-tracing.html"
+                    <a href="/queues.html"
                        rel="bookmark"
-                       title="Permalink to Algorithm Tracing">
-                        Algorithm&nbsp;Tracing
+                       title="Permalink to Queues">
+                        Queues
                     </a>
                 </h1>
             </header>
@@ -92,7 +92,7 @@ Computer Science Notes            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2015-02-08T00:00:00-06:00"> Sun 08 February 2015</time>
+        <i class="fa fa-calendar"></i><time datetime="2015-03-20T00:00:00-06:00"> Fri 20 March 2015</time>
     </span>
 
 
@@ -101,74 +101,65 @@ Computer Science Notes            </a>
 
 
 <span class="label label-default">Tags</span>
-	<a href="/tag/algorithms.html">Algorithms</a>
-        /
 	<a href="/tag/fourth_semester.html">Fourth_Semester</a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <h3 id="definition">Definition</h3>
-<p>This refers to a step-by-step analysis of what a computational calculation performs. By making it explicit what is executed in the program and how the variables included are affected in each execution&nbsp;cycle. </p>
-<h3 id="example">Example</h3>
-<p>The following example, coded in <a href="/c-programming-basics.html">C</a>, illustrates the tracing of reversing the contents on an <a href="/one-dimensional-arrays.html">Array</a>.</p>
-<p>Code:</p>
-<div class="highlight"><pre><span class="cp">#include &lt;stdio.h&gt;</span>
-<span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">){</span>
-<span class="kt">int</span> <span class="n">my_array</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">};</span>
-<span class="kt">int</span> <span class="n">size</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span><span class="n">temp</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">size</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+                <h2 id="definition">Definition</h2>
+<p>A queue is a container of objects &#8212;otherwise known as a data structure&#8212;, that stores elements in such a way that new elements are added to the back, and the ones to be processed are chosen from the bottom. 
+<div style="text-align: center">
+   <img src=" http://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Queue_algorithmn.jpg/400px-Queue_algorithmn.jpg" alt="Your alt text" title="Title"/></p>
+</div>
 
-<span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">x</span><span class="o">&lt;</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span><span class="n">x</span><span class="o">++</span><span class="p">){</span>
-<span class="n">temp</span> <span class="o">=</span> <span class="n">my_array</span><span class="p">[</span><span class="n">x</span><span class="p">];</span>
-<span class="n">my_array</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span><span class="n">my_array</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
-<span class="n">my_array</span><span class="p">[</span><span class="n">index</span><span class="o">--</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
-<span class="p">}</span>
+<p>The basic queue operations are enqueue() and dequeue(), this respecively insert and delete elements from what is known as the rear, and front of the queue. This parts are analogous to the stack’s top and&nbsp;bottom. </p>
+<h2 id="differences-from-stacks">Differences from&nbsp;Stacks</h2>
+<p>An important difference from the stack data structure to be considered, is the way both handle removal of items. Within a queue, the process is not as simple as only declaring certain item as able to be overwritten, as this would lead to a scenario in which space in the queue is simply inaccessible and wasted. Therefore two alternatives are possible: 
+    1. To displace each element of the array 
+    2. To implement the queue using a <em>circular array</em>
+While the first solution is more straight forward, it is also severely inefficient, so (2) would be much more appropriate, even though the implementation is not as&nbsp;simple. </p>
+<div style="text-align: center">
+   <img src="http://www.codeproject.com/KB/threads/LockFree/circular_queue___conceptual-view.jpg" alt="Your alt text" title="Title"/>
+
+</div>
+
+<h3 id="exercise">Exercise</h3>
+<ol>
+<li>Develop the basic queue operations using a circular&nbsp;array.</li>
+</ol>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">enQ</span><span class="o">(</span><span class="kt">int</span> <span class="n">value</span><span class="o">,</span> <span class="kt">int</span> <span class="n">q</span><span class="o">[]){</span>
+  <span class="k">if</span> <span class="o">(!(</span><span class="n">count</span><span class="o">+</span><span class="mi">1</span> <span class="o">&gt;</span> <span class="n">SIZE</span><span class="o">)){</span>
+  <span class="c1">//Calculate new top</span>
+  <span class="n">top</span> <span class="o">=</span> <span class="o">(</span><span class="n">top</span><span class="o">+</span><span class="mi">1</span><span class="o">)%</span> <span class="n">SIZE</span><span class="o">;</span>
+  <span class="n">count</span> <span class="o">++;</span>
+  <span class="n">q</span><span class="o">[</span><span class="n">top</span><span class="o">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+  <span class="o">}</span>
+  <span class="c1">//System.out.println(Arrays.toString(QUEUE));</span>
+<span class="o">}</span>
+
+<span class="kt">int</span> <span class="nf">deQ</span><span class="o">(</span><span class="kt">int</span> <span class="n">q</span><span class="o">[]){</span>
+  <span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+  <span class="k">if</span> <span class="o">((</span><span class="n">count</span><span class="o">-</span><span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">)){</span>
+  <span class="c1">//Calculate new bottom</span>
+  <span class="n">bottom</span> <span class="o">=</span> <span class="o">(</span><span class="n">bottom</span> <span class="o">+</span><span class="mi">1</span><span class="o">)</span> <span class="o">%</span> <span class="n">SIZE</span><span class="o">;</span>
+  <span class="n">count</span><span class="o">--;</span>
+  <span class="n">number</span> <span class="o">=</span> <span class="n">q</span><span class="o">[</span><span class="n">bottom</span><span class="o">];</span>
+  <span class="n">q</span><span class="o">[</span><span class="n">bottom</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+  <span class="n">println</span><span class="o">(</span><span class="s">&quot;Count: &quot;</span><span class="o">+</span> <span class="n">count</span> <span class="o">+</span><span class="s">&quot; Top: &quot;</span> <span class="o">+</span><span class="n">top</span> <span class="o">+</span><span class="s">&quot; Bottom: &quot;</span><span class="o">+</span><span class="n">bottom</span><span class="o">);</span>
+  <span class="o">}</span>
+  <span class="c1">//System.out.println(Arrays.toString(QUEUE));</span>
+  <span class="k">return</span> <span class="n">number</span><span class="o">;</span>
+<span class="o">}</span>
 </pre></div>
 
 
-<h3 id="tracing">Tracing:</h3>
+<p>2 Develop a peek() function that returns the element in the front of the queue without removing&nbsp;it. </p>
+<h2 id="possible-applications">Possible&nbsp;Applications</h2>
+<p>Queues are often implemented within an operating system for determining the priority of certain instructions, this is known as <em>scheduling</em>, and is useful both for <span class="caps">CPU</span> time allocation, as well as I/O&nbsp;resources. </p>
+<h2 id="additional-resources">Additional&nbsp;Resources</h2>
 <ul>
-<li>General Information:<ul>
-<li>Times the loop runs:&nbsp;3</li>
-<li>Variables <span class="amp">&amp;</span> their purpose: <em>size</em>: Self-explanatory; <em>temp</em>: Aids in swap operation; <em>x</em>: For loop&nbsp;counter. </li>
+<li><a href="http://www.cs.cmu.edu/~adamchik/15-121/lectures/Stacks%20and%20Queues/Stacks%20and%20Queues.html">Stacks and&nbsp;Queues</a></li>
+<li><a href="http://www.cprogramming.com/tutorial/computersciencetheory/queue.html">Implementation in&nbsp;C++</a></li>
 </ul>
-</li>
-<li>State of the variables at end of each&nbsp;loop:</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>x Variable</th>
-<th>temp Variable</th>
-<th>my_array[] Contents</th>
-<th>index Variable</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0;</td>
-<td>1;</td>
-<td>6,2,3,4,5,1</td>
-<td>5</td>
-</tr>
-<tr>
-<td>1;</td>
-<td>2;</td>
-<td>6,5,3,4,2,1</td>
-<td>4</td>
-</tr>
-<tr>
-<td>2;</td>
-<td>3;</td>
-<td>6,5,4,3,2,1</td>
-<td>3</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Final <span class="amp">&amp;</span> initial state of the&nbsp;array:</li>
-</ul>
-<div class="highlight"><pre><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">}</span> <span class="n">becomes</span> <span class="p">{</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span>
-</pre></div>
             </div>
             <!-- /.entry-content -->
         </article>

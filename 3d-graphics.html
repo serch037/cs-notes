@@ -2,7 +2,7 @@
 <html lang="en"
 >
 <head>
-    <title>C Programming Basics - Computer Science Notes</title>
+    <title>3D Graphics - Computer Science Notes</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,11 +10,11 @@
 
 
 
-<link rel="canonical" href="/c-programming-basics.html">
+<link rel="canonical" href="/3d-graphics.html">
 
         <meta name="author" content="Sergio Ugalde Marcano" />
-        <meta name="keywords" content="C,Fourth_Semester" />
-        <meta name="description" content="C is a low-level programming languages, it concedes programmers greater capabilities and generally produces faster code, as it has less overhead to the processor. However, it has weaker error checking, as it trusts in the capabilities of the programmers to make well written code, and gives them the responsiility to ..." />
+        <meta name="keywords" content="Fourth_Semester" />
+        <meta name="description" content="Computer graphics is an advantage topic within computer science, which combines knowledge from programming, mathematics and design." />
 
     <!-- Enable latex plugin -->
 
@@ -33,8 +33,8 @@
               title="Computer Science Notes ATOM Feed"/>
 
 
-        <link href="/feeds/parcial_1.atom.xml" type="application/atom+xml" rel="alternate"
-              title="Computer Science Notes Parcial_1 ATOM Feed"/>
+        <link href="/feeds/parcial_2.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Computer Science Notes Parcial_2 ATOM Feed"/>
 
 </head>
 <body>
@@ -56,10 +56,10 @@ Computer Science Notes            </a>
                          <li><a href="/pages/about.html">
                              About
                           </a></li>
-                        <li class="active">
+                        <li >
                             <a href="/category/parcial_1.html">Parcial_1</a>
                         </li>
-                        <li >
+                        <li class="active">
                             <a href="/category/parcial_2.html">Parcial_2</a>
                         </li>
             </ul>
@@ -79,10 +79,10 @@ Computer Science Notes            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="/c-programming-basics.html"
+                    <a href="/3d-graphics.html"
                        rel="bookmark"
-                       title="Permalink to C Programming Basics">
-                        C Programming&nbsp;Basics
+                       title="Permalink to 3D Graphics">
+                        3D&nbsp;Graphics
                     </a>
                 </h1>
             </header>
@@ -92,7 +92,7 @@ Computer Science Notes            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2015-02-08T00:00:00-06:00"> Sun 08 February 2015</time>
+        <i class="fa fa-calendar"></i><time datetime="2015-03-19T00:00:00-06:00"> Thu 19 March 2015</time>
     </span>
 
 
@@ -101,16 +101,65 @@ Computer Science Notes            </a>
 
 
 <span class="label label-default">Tags</span>
-	<a href="/tag/c.html">C</a>
-        /
 	<a href="/tag/fourth_semester.html">Fourth_Semester</a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>C is a low-level programming languages, it concedes programmers greater capabilities and generally produces faster code, as it has less overhead to the processor. However, it has weaker error checking, as it trusts in the capabilities of the programmers to make well written code, and gives them the responsiility to do&nbsp;so.  </p>
-<h3 id="usage-basics">Usage&nbsp;basics</h3>
-<p>As C is a compiled language (as opposed to scripting ones, such as Python, which are usually run via a virtual machine), it needs to be processed from source code to machine before it may be executed. For simple projects, this is done only by compiling, but substeps include linking, preprocessing, etc. which may be explored further&nbsp;on. </p>
-<p>For achieving this task, several compilers have been written, which follow the C standard as definied by a comittee of several developers <span class="amp">&amp;</span> contributors. However, the most important ones as of the moment are <span class="caps">GCC</span> or <span class="caps">LLVM</span>/Clang, the first of which is the one being used currently by the&nbsp;author.</p>
+                <h2 id="definition">Definition</h2>
+<p>This topic refers to the techniques used to represent images using algorithmically in a computer for several purposes, such as animation, data visualization, etc. It includes both the processing and the representation of two-dimentional and three-dimensional&nbsp;graphics. </p>
+<h2 id="mathematical-topics">Mathematical&nbsp;topics</h2>
+<ul>
+<li>Geometry</li>
+<li>Vectors</li>
+<li>Matrixes</li>
+<li>Etc. </li>
+</ul>
+<h2 id="3d-models">3D&nbsp;Models</h2>
+<p>As previously established, computers require certain abstractions for representing graphics. The most basic one, is the use of triangles in intersecting surfaces. This triangles are described using a series of vertexes. The process by which a 3D object is converted into a model suitable for graphical representation in a computer is called modeling. As the numbers of such base figure increases, the resolution of the image increases as well, but so does the expensiveness of the calculations&nbsp;involved. </p>
+<div style="text-align: center">
+   <img src="http://xoo.me/template/7820/p16laf9eb4otd6etedj1fki1qhh9-thumb.jpg " alt="Your alt text" title="Title"/>
+</div>
+
+<p>Therefore, most 3d objects may be represented combining some basic figures, this are known as <em>primitives</em>, in processing the primitives are called as follows: 
+<em> box(int size);
+</em> sphere(int&nbsp;radius);</p>
+<p>More complex models, may be defined using the beginShape(), vertex(x,y,z), and endShape() functions. Refer to the processing documentation for further&nbsp;information. </p>
+<h2 id="transformations">Transformations</h2>
+<p>Once modeled, objects may be rotated, scaled or translated (displaced). This procedures are applied in what is known as a <em>transformation matrix</em>, which is the medium that represents the space in which the object is&nbsp;placed. </p>
+<div style="text-align: center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vQ60rFwh2ig" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<h2 id="basic-animation">Basic&nbsp;Animation</h2>
+<p>Animation may be considered as a series of sequential animations applied to a graphical object, so in order to transmit the illusion of movement, an object may be translated several times, following small steps and a determined path. Scale and rotation may be used to create other effects. The most important aspect, is that the object should be redrawn in each frame with a slight difference, so that when the transformation is applied throughout the frames, an effect of animation takes&nbsp;place.  </p>
+<h2 id="lights-materials-textures">Lights, Materials,&nbsp;Textures</h2>
+<p>Another aspect of 3D graphics, is the consideration of lightning. This has a qualitative impact on the nature of the scene to be rendered, and is closely related to other topics, such as materials and textures. Lightning helps to illustrate the relative distance between a model and a lightning source. Then, a texture refers to how the model should be filled so that it does not appear as a monochromatic mesh. A material may be simulated in the way an object reflects light and, when related to its texture, gives a more realistic effect, therefore, a “metallic” model, may reflect light differently than a “plastical” model, this may be accomplished by a combinations of the shininess() and specularity() methods in processing, among other&nbsp;techniques.</p>
+<div style="text-align: center">
+   <img src="http://graphics.cs.yale.edu/site/sites/files/images/Aging Materials_teaser.png" alt="Your alt text" title="Title"/>
+</div>
+
+<h2 id="tools">Tools</h2>
+<p>According to the abstraction level <span class="amp">&amp;</span> the optimization requirement different tools are available for programmers. Some of them&nbsp;include: </p>
+<ul>
+<li>OpenGl</li>
+<li>DirectX</li>
+<li>Processing (which is the one to be used during this&nbsp;course)</li>
+<li>Unity</li>
+<li>Blender</li>
+<li>Unreal&nbsp;Engine</li>
+</ul>
+<h2 id="additional-resources">Additional&nbsp;Resources</h2>
+<ul>
+<li><a href="https://processing.org/tutorials/transform2d/">Processing&nbsp;Transformations</a></li>
+<li><a href="https://www.edx.org/course/foundations-computer-graphics-uc-berkeleyx-cs184-1x">Computer Graphics&nbsp;course</a></li>
+<li>Graphics series with John Chapman:<ul>
+<li><a href="http://youtu.be/KdyvizaygyY">Universe of&nbsp;Triangles</a></li>
+<li><a href="http://youtu.be/vQ60rFwh2ig">Power of the&nbsp;Matrix</a></li>
+<li><a href="http://youtu.be/aweqeMxDnu4">Triangles to&nbsp;Pixels</a></li>
+<li><a href="http://youtu.be/OODzTMcGDD0">Visibility&nbsp;Problem</a></li>
+</ul>
+</li>
+</ul>
             </div>
             <!-- /.entry-content -->
         </article>
