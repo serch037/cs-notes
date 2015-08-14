@@ -2,7 +2,7 @@
 <html lang="en"
 >
 <head>
-    <title>Two Dimensional Arrays - Computer Science Notes</title>
+    <title>First Exercise - Computer Science Notes</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,21 +10,20 @@
 
 
 
-<link rel="canonical" href="./two-dimensional-arrays.html">
+<link rel="canonical" href="./first-exercise.html">
 
         <meta name="author" content="Sergio Ugalde Marcano" />
-        <meta name="keywords" content="Arrays,Fourth_Semester" />
-        <meta name="description" content="Definition In a fundamental way, two dimensional arrays are rather similar two one dimentional arrays, as the processor treats it as an extended one dimensional array. For the user, however, the net effect is effectively different. Two dimensional arrays are best represented, by a two dimensional matrix of information. However ..." />
+        <meta name="keywords" content="Fifth-Semester" />
+        <meta name="description" content="This is a program that splatters paint around the mouse." />
 
         <meta property="og:site_name" content="Computer Science Notes" />
         <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Two Dimensional Arrays"/>
-        <meta property="og:url" content="./two-dimensional-arrays.html"/>
-        <meta property="og:description" content="Definition In a fundamental way, two dimensional arrays are rather similar two one dimentional arrays, as the processor treats it as an extended one dimensional array. For the user, however, the net effect is effectively different. Two dimensional arrays are best represented, by a two dimensional matrix of information. However ..."/>
-        <meta property="article:published_time" content="2015-02-08" />
-            <meta property="article:section" content="Parcial_1" />
-            <meta property="article:tag" content="Arrays" />
-            <meta property="article:tag" content="Fourth_Semester" />
+        <meta property="og:title" content="First Exercise"/>
+        <meta property="og:url" content="./first-exercise.html"/>
+        <meta property="og:description" content="This is a program that splatters paint around the mouse."/>
+        <meta property="article:published_time" content="2015-08-13" />
+            <meta property="article:section" content="Modelling" />
+            <meta property="article:tag" content="Fifth-Semester" />
             <meta property="article:author" content="Sergio Ugalde Marcano" />
 
 
@@ -57,10 +56,10 @@ Computer Science Notes            </a>
                          <li><a href="./pages/about.html">
                              About
                           </a></li>
-                        <li >
+                        <li class="active">
                             <a href="./category/modelling.html">Modelling</a>
                         </li>
-                        <li class="active">
+                        <li >
                             <a href="./category/parcial_1.html">Parcial_1</a>
                         </li>
                         <li >
@@ -87,10 +86,10 @@ Computer Science Notes            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="./two-dimensional-arrays.html"
+                    <a href="./first-exercise.html"
                        rel="bookmark"
-                       title="Permalink to Two Dimensional Arrays">
-                        Two Dimensional&nbsp;Arrays
+                       title="Permalink to First Exercise">
+                        First&nbsp;Exercise
                     </a>
                 </h1>
             </header>
@@ -100,45 +99,82 @@ Computer Science Notes            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2015-02-08T00:00:00-06:00"> Sun 08 February 2015</time>
+        <i class="fa fa-calendar"></i><time datetime="2015-08-13T00:00:00-05:00"> Thu 13 August 2015</time>
     </span>
 
 
 
 <span class="label label-default">Tags</span>
-	<a href="./tag/arrays.html">Arrays</a>
-        /
-	<a href="./tag/fourth_semester.html">Fourth_Semester</a>
+	<a href="./tag/fifth-semester.html">Fifth-Semester</a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <h3 id="definition">Definition</h3>
-<p>In a fundamental way, two dimensional arrays are rather similar two one dimentional arrays, as the processor treats it as an <em>extended</em> one dimensional array. For the user, however, the net effect is effectively different. Two dimensional arrays are best represented, by a two dimensional matrix of information. However, the notion of an array of arrays is also valid, and, as a matter of fact, useful for grasping the concept of its syntax and&nbsp;declaration. </p>
-<h3 id="essential-operations">Essential&nbsp;operations</h3>
-<ul>
-<li>Declaration and&nbsp;assignment</li>
-<li>Looping <ul>
-<li>Requires two indexes and&nbsp;loops</li>
-</ul>
-</li>
-<li>Vertical and/or horizontal&nbsp;rotation</li>
-</ul>
-<h4 id="c-like-syntax">C-like&nbsp;syntax</h4>
-<div class="highlight"><pre><span class="c1">// Declaration</span>
-<span class="kt">int</span> <span class="n">an_array</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> 
-    <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">},</span>
-    <span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">},</span>
-    <span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">},</span>
-<span class="p">}</span>
-<span class="c1">// When used as function argument, its size must be given first.</span>
-<span class="kt">int</span> <span class="n">an_arrayFunction</span><span class="p">(</span><span class="kt">int</span> <span class="n">sizex</span><span class="p">,</span> <span class="n">sizey</span><span class="p">,</span> <span class="n">anrray</span><span class="p">[</span><span class="n">sizey</span><span class="p">][</span><span class="n">sizex</span><span class="p">]);</span>
+                <h2 id="experience">Experience</h2>
+<p>For this program, I had to think about distributions for both the splatter distance, and the rgb distance, however, using Gaussian random numbers, which implement standard distribution and bell curves, this simplified the problem. I solved the problem gradually, first making the splatter around the mouse, and later changing the colors, finally I implemented the mouse&nbsp;following. </p>
+<h2 id="code">Code</h2>
+<p>:::java
+    import java.util.Random;
+    Random generator; 
+    float&nbsp;redmean,bluemean,greenmean;</p>
+<div class="highlight"><pre>void setup() {
+  size(640*2, 360*2);
+  background(0);
+
+  generator = new Random();
+  redmean = bluemean = greenmean =  255/2;
+}
+
+void draw() {
+
+  // Get a gaussian random number w/ mean of 0 and standard deviation of 1.0
+  float xloc = (float)generator.nextGaussian();
+  float yloc = (float)generator.nextGaussian();
+  //randomGaussian();
+
+  float sd = 20, csd = 20;                // Define a standard deviation
+  float mean = width/2;         // Define a mean value (middle of the screen along the x-axis)
+  xloc = ( xloc * sd ) + mouseX;
+  yloc = ( yloc * sd ) + mouseY;  // Scale the gaussian random number by standard deviation and mean
+
+  noStroke();
+  float redloc = (float)generator.nextGaussian() * csd + redmean; 
+  float greenloc = (float)generator.nextGaussian() * csd + bluemean;
+ float blueloc = (float)generator.nextGaussian() * csd + greenmean;
+
+  fill(redloc, greenloc, blueloc);
+  noStroke();
+  ellipse(xloc, yloc, 16, 16);   // Draw an ellipse at our &quot;normal&quot; random location
+}
+void keyPressed(){
+  switch (key){
+   case &#39;r&#39;:
+   redmean = 3*(255/3);
+   break;
+   case &#39;b&#39;:
+      bluemean = 3*(255/3);
+   break;
+   case &#39;g&#39;:
+      greenmean = 3*(255/3);
+   break;
+  }
+}
+
+void keyReleased(){
+  switch (key){
+   case &#39;r&#39;:
+   redmean = (255/2);
+   break;
+   case &#39;b&#39;:
+      bluemean = (255/2);
+   break;
+   case &#39;g&#39;:
+      greenmean = (255/2);
+   break;
+   case &#39;c&#39;:
+   background(0);
+  }
+}
 </pre></div>
-
-
-<h3 id="additional-resources">Additional&nbsp;resources</h3>
-<h4 id="graphics">Graphics</h4>
-<p><a href="http://www.mat.univie.ac.at/~kriegl/Skripten/CG/node25.html">Midpoing line algorithm</a>
-<a href="http://www.asksatyam.com/2011/01/midpoint-circle-algorithm.html">Midpoint cirle&nbsp;algorithm</a></p>
             </div>
             <!-- /.entry-content -->
         </article>
