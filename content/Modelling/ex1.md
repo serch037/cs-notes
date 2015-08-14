@@ -6,6 +6,8 @@ Summary: This is a program that splatters paint around the mouse.
 ## Experience
 For this program, I had to think about distributions for both the splatter distance, and the rgb distance, however, using Gaussian random numbers, which implement standard distribution and bell curves, this simplified the problem. I solved the problem gradually, first making the splatter around the mouse, and later changing the colors, finally I implemented the mouse following. 
 
+
+<iframe width="420" height="315" src="https://www.youtube.com/embed/XwpK63nb7d0" frameborder="0" allowfullscreen></iframe>
 ## Code
 
 :::java
