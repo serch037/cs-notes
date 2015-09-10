@@ -2,7 +2,7 @@
 <html lang="en"
 >
 <head>
-    <title>Authors - Computer Science Notes</title>
+    <title>Fourth Exercise - Computer Science Notes</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,15 +10,21 @@
 
 
 
+<link rel="canonical" href="./fourth-exercise.html">
 
         <meta name="author" content="Sergio Ugalde Marcano" />
+        <meta name="keywords" content="Fifth-Semester" />
+        <meta name="description" content="This program spawns particles around the mouse" />
 
-    <!-- Open Graph tags -->
         <meta property="og:site_name" content="Computer Science Notes" />
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="Computer Science Notes"/>
-        <meta property="og:url" content="."/>
-        <meta property="og:description" content="Computer Science Notes"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Fourth Exercise"/>
+        <meta property="og:url" content="./fourth-exercise.html"/>
+        <meta property="og:description" content="This program spawns particles around the mouse"/>
+        <meta property="article:published_time" content="2015-09-09" />
+            <meta property="article:section" content="Modelling" />
+            <meta property="article:tag" content="Fifth-Semester" />
+            <meta property="article:author" content="Sergio Ugalde Marcano" />
 
 
     <!-- Bootstrap -->
@@ -50,7 +56,7 @@ Computer Science Notes            </a>
                          <li><a href="./pages/about.html">
                              About
                           </a></li>
-                        <li >
+                        <li class="active">
                             <a href="./category/modelling.html">Modelling</a>
                         </li>
                         <li >
@@ -76,8 +82,139 @@ Computer Science Notes            </a>
     <div class="row">
         <div class="col-sm-9">
 
-    <h1>Authors on Computer Science Notes</h1>
-        <li><a href="./author/sergio-ugalde-marcano.html">Sergio Ugalde Marcano</a> (15)</li>
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="./fourth-exercise.html"
+                       rel="bookmark"
+                       title="Permalink to Fourth Exercise">
+                        Fourth&nbsp;Exercise
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2015-09-09T00:00:00-05:00"> Wed 09 September 2015</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="./tag/fifth-semester.html">Fifth-Semester</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h2 id="experience">Experience</h2>
+<p>The program required some simple but interesting modifications from the provided example, I had to reconsider my choice once I realized my original plan of creating multiple particle systems was less efficient as changing the coordinates of the origin of individual&nbsp;particles. </p>
+<h2 id="video">Video</h2>
+<p>https://drive.google.com/open?id=0B7aIgTzs5Ai_MmZsODZlUDV5eHM</p>
+<h2 id="code">Code</h2>
+<p>:::java
+    // The Nature of Code
+    // Daniel Shiffman
+    //&nbsp;http://natureofcode.com</p>
+<div class="highlight"><pre>ParticleSystem ps;
+
+void setup() {
+  size(640,360);
+  ps = new ParticleSystem(new PVector(mouseX, mouseY));
+}
+
+void draw() {
+
+  background(255);
+
+  ps.addParticle();
+  ps.run();
+}
+// The Nature of Code
+// Daniel Shiffman
+// http://natureofcode.com
+
+// Simple Particle System
+
+class Particle {
+  PVector location;
+  PVector velocity;
+  PVector acceleration;
+  float lifespan;
+
+  Particle(PVector l) {
+    acceleration = new PVector(0,0.05);
+    velocity = new PVector(random(-1,1),random(-2,0));
+    location = l.get();
+    lifespan = 255.0;
+  }
+
+  void run() {
+    update();
+    display();
+  }
+
+  // Method to update location
+  void update() {
+    velocity.add(acceleration);
+    location.add(velocity);
+    lifespan -= 2.0;
+  }
+
+  // Method to display
+  void display() {
+    stroke(0,lifespan);
+    strokeWeight(2);
+    fill(127,lifespan);
+    ellipse(location.x,location.y,12,12);
+  }
+
+  // Is the particle still useful?
+  boolean isDead() {
+    if (lifespan &lt; 0.0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+// The Nature of Code
+// Daniel Shiffman
+// http://natureofcode.com
+
+// Using Generics now!  comment and annotate, etc.
+
+class ParticleSystem {
+  ArrayList&lt;Particle&gt; particles;
+  PVector origin;
+
+  ParticleSystem(PVector location) {
+    origin = location.get();
+    particles = new ArrayList&lt;Particle&gt;();
+  }
+
+  void addParticle() {
+    particles.add(new Particle(new PVector(mouseX,mouseY)));
+  }
+
+  void run() {
+    for (int i = particles.size()-1; i &gt;= 0; i--) {
+      Particle p = particles.get(i);
+      p.run();
+      if (p.isDead()) {
+        particles.remove(i);
+      }
+    }
+  }
+}
+</pre></div>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>

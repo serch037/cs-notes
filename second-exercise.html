@@ -14,14 +14,14 @@
 
         <meta name="author" content="Sergio Ugalde Marcano" />
         <meta name="keywords" content="Fifth-Semester" />
-        <meta name="description" content="This program simulates a ball attracted towards the pointer." />
+        <meta name="description" content="This is a program that attracts objects towards the mouse" />
 
         <meta property="og:site_name" content="Computer Science Notes" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="Second Exercise"/>
         <meta property="og:url" content="./second-exercise.html"/>
-        <meta property="og:description" content="This program simulates a ball attracted towards the pointer."/>
-        <meta property="article:published_time" content="2015-08-13" />
+        <meta property="og:description" content="This is a program that attracts objects towards the mouse"/>
+        <meta property="article:published_time" content="2015-09-09" />
             <meta property="article:section" content="Modelling" />
             <meta property="article:tag" content="Fifth-Semester" />
             <meta property="article:author" content="Sergio Ugalde Marcano" />
@@ -99,7 +99,7 @@ Computer Science Notes            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2015-08-13T00:00:00-05:00"> Thu 13 August 2015</time>
+        <i class="fa fa-calendar"></i><time datetime="2015-09-09T00:00:00-05:00"> Wed 09 September 2015</time>
     </span>
 
 
@@ -110,69 +110,107 @@ Computer Science Notes            </a>
 </footer><!-- /.post-info -->                    </div>
                 </div>
                 <h2 id="experience">Experience</h2>
-<p>This program was more frustrating to write, as I wasn&#8217;t initially sure how to simulate acceleration and deceleration. Finally I added a variable that scales the acceleration vector according to the key the user&nbsp;presses. </p>
+<p>The difficulty with this program was balancing the forces and applying concepts form different exercices, such as the attractor class into a single&nbsp;program. </p>
+<h2 id="video">Video</h2>
+<p>https://drive.google.com/file/d/0B7aIgTzs5Ai_UW42dmV4MmMteGM/view?usp=sharing</p>
 <h2 id="code">Code</h2>
 <p>:::java
-    import java.util.Random;
-    Random generator; 
-    float&nbsp;redmean,bluemean,greenmean;</p>
-<div class="highlight"><pre>void setup() {
-  size(640*2, 360*2);
-  background(0);
+    // The Nature of Code
+    // Daniel Shiffman
+    //&nbsp;http://natureofcode.com</p>
+<div class="highlight"><pre>Mover[] movers = new Mover[20];
 
-  generator = new Random();
-  redmean = bluemean = greenmean =  255/2;
+float g = 0.4;
+
+void setup() {
+  size(800,800);
+  for (int i = 0; i &lt; movers.length; i++) {
+    movers[i] = new Mover(random(0.1,2),random(width),random(height)); 
+  }
 }
 
 void draw() {
+  background(255);
 
-  // Get a gaussian random number w/ mean of 0 and standard deviation of 1.0
-  float xloc = (float)generator.nextGaussian();
-  float yloc = (float)generator.nextGaussian();
-  //randomGaussian();
 
-  float sd = 20, csd = 20;                // Define a standard deviation
-  float mean = width/2;         // Define a mean value (middle of the screen along the x-axis)
-  xloc = ( xloc * sd ) + mouseX;
-  yloc = ( yloc * sd ) + mouseY;  // Scale the gaussian random number by standard deviation and mean
+  for (int i = 0; i &lt; movers.length; i++) {
+    for (int j = 0; j &lt; movers.length; j++) {
+      if (i != j) {
+        PVector force = movers[j].unattract(movers[i]);
+        movers[i].applyForce(force);
+        force = movers[j].mouseAttract();
+        movers[j].applyForce(force);
+      }
+    }
 
-  noStroke();
-  float redloc = (float)generator.nextGaussian() * csd + redmean; 
-  float greenloc = (float)generator.nextGaussian() * csd + bluemean;
- float blueloc = (float)generator.nextGaussian() * csd + greenmean;
-
-  fill(redloc, greenloc, blueloc);
-  noStroke();
-  ellipse(xloc, yloc, 16, 16);   // Draw an ellipse at our &quot;normal&quot; random location
-}
-void keyPressed(){
-  switch (key){
-   case &#39;r&#39;:
-   redmean = 3*(255/3);
-   break;
-   case &#39;b&#39;:
-      bluemean = 3*(255/3);
-   break;
-   case &#39;g&#39;:
-      greenmean = 3*(255/3);
-   break;
+    movers[i].update();
+    movers[i].display();
   }
+
 }
 
-void keyReleased(){
-  switch (key){
-   case &#39;r&#39;:
-   redmean = (255/2);
-   break;
-   case &#39;b&#39;:
-      bluemean = (255/2);
-   break;
-   case &#39;g&#39;:
-      greenmean = (255/2);
-   break;
-   case &#39;c&#39;:
-   background(0);
+// The Nature of Code
+// Daniel Shiffman
+// http://natureofcode.com
+
+class Mover {
+
+  PVector location;
+  PVector velocity;
+  PVector acceleration;
+  float mass;
+
+  Mover(float m, float x, float y) {
+    mass = m;
+    location = new PVector(x, y);
+    velocity = new PVector(0, 0);
+    acceleration = new PVector(0, 0);
   }
+
+  void applyForce(PVector force) {
+    PVector f = PVector.div(force, mass);
+    acceleration.add(f);
+  }
+
+  void update() {
+    velocity.add(acceleration);
+    //velocity.limit(10);
+    location.add(velocity);
+    acceleration.mult(0);
+  }
+
+  void display() {
+    stroke(0);
+    strokeWeight(2);
+    fill(0, 100);
+    ellipse(location.x, location.y, mass*24, mass*24);
+  }
+
+  PVector mouseAttract() {
+    PVector direction = new PVector(mouseX,mouseY);
+    PVector force = PVector.sub(direction, location);             // Calculate direction of force
+    float distance = force.mag();                                 // Distance between objects
+    distance = constrain(distance, 5.0, 25.0);                             // Limiting the distance to eliminate &quot;extreme&quot; results for very close or very far objects
+    force.normalize();                                            // Normalize vector (distance doesn&#39;t matter here, we just want this vector for direction
+
+    float strength = (g * mass * .7) / (distance * distance); // Calculate gravitional force magnitude
+    force.mult(strength);                                         // Get force vector --&gt; magnitude * direction
+    return force;
+  }
+
+  PVector unattract(Mover m) {
+    PVector force = PVector.sub(location, m.location);             // Calculate direction of force
+    float distance = force.mag();                                 // Distance between objects
+    distance = constrain(distance, 0, 50);                             // Limiting the distance to eliminate &quot;extreme&quot; results for very close or very far objects
+    force.normalize();                                            // Normalize vector (distance doesn&#39;t matter here, we just want this vector for direction
+
+    float strength = (g * mass * m.mass) / (distance * distance); // Calculate gravitional force magnitude
+    force.mult(strength*2); 
+    force.mult(-1);  // Get force vector --&gt; magnitude * direction
+    return force;
+  }
+
+
 }
 </pre></div>
             </div>
