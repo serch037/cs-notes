@@ -1,4 +1,4 @@
-Title: Second Exercise
+Title: Second (First Chapter) Exercise
 Date: 2015-08-13 
 Tags: Fifth-Semester 
 Summary: This program simulates a ball attracted towards the pointer.

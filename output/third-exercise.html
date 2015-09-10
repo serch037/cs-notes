@@ -2,7 +2,7 @@
 <html lang="en"
 >
 <head>
-    <title>Authors - Computer Science Notes</title>
+    <title>Third Exercise - Computer Science Notes</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,15 +10,21 @@
 
 
 
+<link rel="canonical" href="./third-exercise.html">
 
         <meta name="author" content="Sergio Ugalde Marcano" />
+        <meta name="keywords" content="Fifth-Semester" />
+        <meta name="description" content="This program turns the object towards the direction it is heading" />
 
-    <!-- Open Graph tags -->
         <meta property="og:site_name" content="Computer Science Notes" />
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="Computer Science Notes"/>
-        <meta property="og:url" content="."/>
-        <meta property="og:description" content="Computer Science Notes"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Third Exercise"/>
+        <meta property="og:url" content="./third-exercise.html"/>
+        <meta property="og:description" content="This program turns the object towards the direction it is heading"/>
+        <meta property="article:published_time" content="2015-09-09" />
+            <meta property="article:section" content="Modelling" />
+            <meta property="article:tag" content="Fifth-Semester" />
+            <meta property="article:author" content="Sergio Ugalde Marcano" />
 
 
     <!-- Bootstrap -->
@@ -50,7 +56,7 @@ Computer Science Notes            </a>
                          <li><a href="./pages/about.html">
                              About
                           </a></li>
-                        <li >
+                        <li class="active">
                             <a href="./category/modelling.html">Modelling</a>
                         </li>
                         <li >
@@ -76,8 +82,162 @@ Computer Science Notes            </a>
     <div class="row">
         <div class="col-sm-9">
 
-    <h1>Authors on Computer Science Notes</h1>
-        <li><a href="./author/sergio-ugalde-marcano.html">Sergio Ugalde Marcano</a> (15)</li>
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="./third-exercise.html"
+                       rel="bookmark"
+                       title="Permalink to Third Exercise">
+                        Third&nbsp;Exercise
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2015-09-09T00:00:00-05:00"> Wed 09 September 2015</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="./tag/fifth-semester.html">Fifth-Semester</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h2 id="experience">Experience</h2>
+<p>The difficulty with this program was adapting the code from the example, with what I had in mind for the program, as well as identifying the way Processing manages geometric&nbsp;shapes.</p>
+<h2 id="video">Video</h2>
+<p>https://drive.google.com/open?id=0B7aIgTzs5Ai_MmhXem5NWGFPMms</p>
+<h2 id="code">Code</h2>
+<p>:::java
+    // The Nature of Code
+    // Daniel Shiffman
+    //&nbsp;http://natureofcode.com</p>
+<div class="highlight"><pre>Mover mover;
+
+void setup() {
+  size(800,800);
+  mover = new Mover(); 
+}
+
+void draw() {
+  background(255);
+
+  mover.update();
+  mover.checkEdges();
+  mover.display(); 
+}
+
+void keyPressed(){
+  switch (keyCode){
+    case RIGHT:
+    mover.updateR();
+    println(&quot;RIGHT&quot;);
+    break;
+    case LEFT:
+    mover.updateL();
+    println(&quot;LEFT&quot;);
+    break;
+  }
+}
+
+// The Nature of Code
+// Daniel Shiffman
+// http://natureofcode.com
+
+class Mover {
+
+  PVector location;
+  PVector velocity;
+  PVector acceleration;
+  float topspeed;
+
+  float xoff, yoff;
+
+  float r = 16;
+
+  Mover() {
+    location = new PVector(width/2, height/2);
+    velocity = new PVector(0, 0);
+    acceleration = new PVector(0,0);
+    topspeed = 4;
+    xoff = 1000;
+    yoff = 0;
+  }
+
+
+  void update() {
+    velocity.add(acceleration);
+    velocity.limit(topspeed);
+    location.add(velocity);
+  }
+
+  void updateR() {
+    PVector dir = PVector.sub(new PVector(1,0), location);
+    dir.normalize();
+    dir.mult(0.5);
+    acceleration = new PVector(10,0);
+
+    velocity.add(acceleration);
+    velocity.limit(topspeed);
+    location.add(velocity);
+  }
+
+    void updateL() {
+
+    PVector dir = PVector.sub(new PVector(-1,0), location);
+    dir.normalize();
+    dir.mult(0.5);
+    acceleration = dir;
+    acceleration = new PVector(-10,0);
+    velocity.add(acceleration);
+    velocity.limit(topspeed);
+    location.add(velocity);
+  }
+
+  void display() {
+    float theta = velocity.heading2D();
+
+    stroke(0);
+    strokeWeight(2);
+    fill(127);
+    pushMatrix();
+    rectMode(CENTER);
+    translate(location.x, location.y);
+    rotate(theta);
+    rect(0, 0, 50, 50);
+    triangle(50,0,0,-50,0,50);
+    popMatrix();
+  }
+
+  void checkEdges() {
+
+    if (location.x &gt; width) {
+      location.x = 0;
+    } 
+    else if (location.x &lt; 0) {
+      location.x = width;
+    }
+
+    if (location.y &gt; height) {
+      location.y = 0;
+    } 
+    else if (location.y &lt; 0) {
+      location.y = height;
+    }
+  }
+}
+</pre></div>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>

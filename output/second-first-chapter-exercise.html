@@ -2,7 +2,7 @@
 <html lang="en"
 >
 <head>
-    <title>Authors - Computer Science Notes</title>
+    <title>Second (First Chapter) Exercise - Computer Science Notes</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,15 +10,21 @@
 
 
 
+<link rel="canonical" href="./second-first-chapter-exercise.html">
 
         <meta name="author" content="Sergio Ugalde Marcano" />
+        <meta name="keywords" content="Fifth-Semester" />
+        <meta name="description" content="This program simulates a ball attracted towards the pointer." />
 
-    <!-- Open Graph tags -->
         <meta property="og:site_name" content="Computer Science Notes" />
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="Computer Science Notes"/>
-        <meta property="og:url" content="."/>
-        <meta property="og:description" content="Computer Science Notes"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Second (First Chapter) Exercise"/>
+        <meta property="og:url" content="./second-first-chapter-exercise.html"/>
+        <meta property="og:description" content="This program simulates a ball attracted towards the pointer."/>
+        <meta property="article:published_time" content="2015-08-13" />
+            <meta property="article:section" content="Modelling" />
+            <meta property="article:tag" content="Fifth-Semester" />
+            <meta property="article:author" content="Sergio Ugalde Marcano" />
 
 
     <!-- Bootstrap -->
@@ -50,7 +56,7 @@ Computer Science Notes            </a>
                          <li><a href="./pages/about.html">
                              About
                           </a></li>
-                        <li >
+                        <li class="active">
                             <a href="./category/modelling.html">Modelling</a>
                         </li>
                         <li >
@@ -76,8 +82,104 @@ Computer Science Notes            </a>
     <div class="row">
         <div class="col-sm-9">
 
-    <h1>Authors on Computer Science Notes</h1>
-        <li><a href="./author/sergio-ugalde-marcano.html">Sergio Ugalde Marcano</a> (15)</li>
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="./second-first-chapter-exercise.html"
+                       rel="bookmark"
+                       title="Permalink to Second (First Chapter) Exercise">
+                        Second (First Chapter)&nbsp;Exercise
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2015-08-13T00:00:00-05:00"> Thu 13 August 2015</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="./tag/fifth-semester.html">Fifth-Semester</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h2 id="experience">Experience</h2>
+<p>This program was more frustrating to write, as I wasn&#8217;t initially sure how to simulate acceleration and deceleration. Finally I added a variable that scales the acceleration vector according to the key the user&nbsp;presses. </p>
+<h2 id="code">Code</h2>
+<p>:::java
+    import java.util.Random;
+    Random generator; 
+    float&nbsp;redmean,bluemean,greenmean;</p>
+<div class="highlight"><pre>void setup() {
+  size(640*2, 360*2);
+  background(0);
+
+  generator = new Random();
+  redmean = bluemean = greenmean =  255/2;
+}
+
+void draw() {
+
+  // Get a gaussian random number w/ mean of 0 and standard deviation of 1.0
+  float xloc = (float)generator.nextGaussian();
+  float yloc = (float)generator.nextGaussian();
+  //randomGaussian();
+
+  float sd = 20, csd = 20;                // Define a standard deviation
+  float mean = width/2;         // Define a mean value (middle of the screen along the x-axis)
+  xloc = ( xloc * sd ) + mouseX;
+  yloc = ( yloc * sd ) + mouseY;  // Scale the gaussian random number by standard deviation and mean
+
+  noStroke();
+  float redloc = (float)generator.nextGaussian() * csd + redmean; 
+  float greenloc = (float)generator.nextGaussian() * csd + bluemean;
+ float blueloc = (float)generator.nextGaussian() * csd + greenmean;
+
+  fill(redloc, greenloc, blueloc);
+  noStroke();
+  ellipse(xloc, yloc, 16, 16);   // Draw an ellipse at our &quot;normal&quot; random location
+}
+void keyPressed(){
+  switch (key){
+   case &#39;r&#39;:
+   redmean = 3*(255/3);
+   break;
+   case &#39;b&#39;:
+      bluemean = 3*(255/3);
+   break;
+   case &#39;g&#39;:
+      greenmean = 3*(255/3);
+   break;
+  }
+}
+
+void keyReleased(){
+  switch (key){
+   case &#39;r&#39;:
+   redmean = (255/2);
+   break;
+   case &#39;b&#39;:
+      bluemean = (255/2);
+   break;
+   case &#39;g&#39;:
+      greenmean = (255/2);
+   break;
+   case &#39;c&#39;:
+   background(0);
+  }
+}
+</pre></div>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
