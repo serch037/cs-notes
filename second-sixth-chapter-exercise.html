@@ -112,45 +112,46 @@ Computer Science Notes            </a>
                 <h2 id="experience">Experience</h2>
 <p>The main modifications done in this program was the implementation the of the noise function. It was not really a big one, as only a few lines were modified. However, some refactoring had to be done in order for variables to be available in other scopes from the original ones. Originally, I intended to use sliders, but due to the disperse documentation and  time restraints I decided to go with Perlin Noise instead. In order to visualize the noise in a more significant way, the size of the objects vary acording to the ratio of cohesion to separation. However, this addition did not have an effect as evident as&nbsp;expected. </p>
 <h2 id="code">Code</h2>
-<p>(included only modifications)
-:::java
-    void calculate(){
-        beginNoise = 0.005<em>noiseStep++;
-        maxspeed = noise(beginNoise)</em>6;
-        maxforce = noise(beginNoise)<em>0.15;
-        sepw = noise(beginNoise)</em>4;
-        aliw = noise(beginNoise)<em>3;
-        cohw = noise(beginNoise)</em>3;
-        sep.mult(sepw);
-        ali.mult(aliw);
-        coh.mult(cohw);
-        println(&#8220;<span class="caps">SEPW</span>: &#8220;+sepw);&nbsp;}</p>
-<div class="highlight"><pre>      void render() {
-    // Draw a triangle rotated in the direction of velocity
-    float theta = velocity.heading2D() + radians(90);
-    fill(175);
-    stroke(0);
-    pushMatrix();
-    translate(location.x,location.y);
-    rotate(theta);
-    beginShape(TRIANGLES);
-    vertex(0*sepw/cohw, -r*2*sepw/cohw);
-    vertex(-r*sepw/cohw, r*2*sepw/cohw);
-    vertex(r*sepw/cohw, r*2*sepw/cohw);
-    endShape();
-    popMatrix();
-  }
-    void flock(ArrayList&lt;Boid&gt; boids) {
-    sep = separate(boids);   // Separation
-    ali = align(boids);      // Alignment
-    coh = cohesion(boids);   // Cohesion
-    // Arbitrarily weight these forces
-    calculate();
-    // Add the force vectors to acceleration
-    applyForce(sep);
-    applyForce(ali);
-    applyForce(coh);
-  }
+<p>(included only&nbsp;modifications)</p>
+<div class="highlight"><pre>    <span class="kt">void</span> <span class="nf">calculate</span><span class="o">(){</span>
+        <span class="n">beginNoise</span> <span class="o">=</span> <span class="mf">0.005</span><span class="o">*</span><span class="n">noiseStep</span><span class="o">++;</span>
+        <span class="n">maxspeed</span> <span class="o">=</span> <span class="n">noise</span><span class="o">(</span><span class="n">beginNoise</span><span class="o">)*</span><span class="mi">6</span><span class="o">;</span>
+        <span class="n">maxforce</span> <span class="o">=</span> <span class="n">noise</span><span class="o">(</span><span class="n">beginNoise</span><span class="o">)*</span><span class="mf">0.15</span><span class="o">;</span>
+        <span class="n">sepw</span> <span class="o">=</span> <span class="n">noise</span><span class="o">(</span><span class="n">beginNoise</span><span class="o">)*</span><span class="mi">4</span><span class="o">;</span>
+        <span class="n">aliw</span> <span class="o">=</span> <span class="n">noise</span><span class="o">(</span><span class="n">beginNoise</span><span class="o">)*</span><span class="mi">3</span><span class="o">;</span>
+        <span class="n">cohw</span> <span class="o">=</span> <span class="n">noise</span><span class="o">(</span><span class="n">beginNoise</span><span class="o">)*</span><span class="mi">3</span><span class="o">;</span>
+        <span class="n">sep</span><span class="o">.</span><span class="na">mult</span><span class="o">(</span><span class="n">sepw</span><span class="o">);</span>
+        <span class="n">ali</span><span class="o">.</span><span class="na">mult</span><span class="o">(</span><span class="n">aliw</span><span class="o">);</span>
+        <span class="n">coh</span><span class="o">.</span><span class="na">mult</span><span class="o">(</span><span class="n">cohw</span><span class="o">);</span>
+        <span class="n">println</span><span class="o">(</span><span class="s">&quot;SEPW: &quot;</span><span class="o">+</span><span class="n">sepw</span><span class="o">);</span>
+    <span class="o">}</span>
+
+          <span class="kt">void</span> <span class="nf">render</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// Draw a triangle rotated in the direction of velocity</span>
+        <span class="kt">float</span> <span class="n">theta</span> <span class="o">=</span> <span class="n">velocity</span><span class="o">.</span><span class="na">heading2D</span><span class="o">()</span> <span class="o">+</span> <span class="n">radians</span><span class="o">(</span><span class="mi">90</span><span class="o">);</span>
+        <span class="n">fill</span><span class="o">(</span><span class="mi">175</span><span class="o">);</span>
+        <span class="n">stroke</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+        <span class="n">pushMatrix</span><span class="o">();</span>
+        <span class="n">translate</span><span class="o">(</span><span class="n">location</span><span class="o">.</span><span class="na">x</span><span class="o">,</span><span class="n">location</span><span class="o">.</span><span class="na">y</span><span class="o">);</span>
+        <span class="n">rotate</span><span class="o">(</span><span class="n">theta</span><span class="o">);</span>
+        <span class="n">beginShape</span><span class="o">(</span><span class="n">TRIANGLES</span><span class="o">);</span>
+        <span class="n">vertex</span><span class="o">(</span><span class="mi">0</span><span class="o">*</span><span class="n">sepw</span><span class="o">/</span><span class="n">cohw</span><span class="o">,</span> <span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">sepw</span><span class="o">/</span><span class="n">cohw</span><span class="o">);</span>
+        <span class="n">vertex</span><span class="o">(-</span><span class="n">r</span><span class="o">*</span><span class="n">sepw</span><span class="o">/</span><span class="n">cohw</span><span class="o">,</span> <span class="n">r</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">sepw</span><span class="o">/</span><span class="n">cohw</span><span class="o">);</span>
+        <span class="n">vertex</span><span class="o">(</span><span class="n">r</span><span class="o">*</span><span class="n">sepw</span><span class="o">/</span><span class="n">cohw</span><span class="o">,</span> <span class="n">r</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">sepw</span><span class="o">/</span><span class="n">cohw</span><span class="o">);</span>
+        <span class="n">endShape</span><span class="o">();</span>
+        <span class="n">popMatrix</span><span class="o">();</span>
+      <span class="o">}</span>
+        <span class="kt">void</span> <span class="nf">flock</span><span class="o">(</span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Boid</span><span class="o">&gt;</span> <span class="n">boids</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">sep</span> <span class="o">=</span> <span class="n">separate</span><span class="o">(</span><span class="n">boids</span><span class="o">);</span>   <span class="c1">// Separation</span>
+        <span class="n">ali</span> <span class="o">=</span> <span class="n">align</span><span class="o">(</span><span class="n">boids</span><span class="o">);</span>      <span class="c1">// Alignment</span>
+        <span class="n">coh</span> <span class="o">=</span> <span class="n">cohesion</span><span class="o">(</span><span class="n">boids</span><span class="o">);</span>   <span class="c1">// Cohesion</span>
+        <span class="c1">// Arbitrarily weight these forces</span>
+        <span class="n">calculate</span><span class="o">();</span>
+        <span class="c1">// Add the force vectors to acceleration</span>
+        <span class="n">applyForce</span><span class="o">(</span><span class="n">sep</span><span class="o">);</span>
+        <span class="n">applyForce</span><span class="o">(</span><span class="n">ali</span><span class="o">);</span>
+        <span class="n">applyForce</span><span class="o">(</span><span class="n">coh</span><span class="o">);</span>
+      <span class="o">}</span>
 </pre></div>
             </div>
             <!-- /.entry-content -->

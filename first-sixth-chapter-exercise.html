@@ -113,156 +113,156 @@ Computer Science Notes            </a>
 <p>By basing the code on the example (6.1) provided by the author, the modification was relatively simple, as we only required to vary the speed according to separate rules in the environment, in this case, its x coordinate. The program also draws these regions and a predicition on the object&#8217;s future position based on its current&nbsp;velocity. </p>
 <h2 id="code">Code</h2>
 <h3 id="main-class">Main&nbsp;class</h3>
-<p>:::java 
-        // <span class="caps">BASED</span> <span class="caps">ON</span> The Nature of Code
-        // <span class="caps">ORIGINALY</span> <span class="caps">BY</span> Daniel Shiffman
-        // http://natureofcode.com
-        // <span class="caps">ADAPTED</span> <span class="caps">BY</span> <span class="caps">SERGIO</span> <span class="caps">UGALDE</span> <span class="caps">MARCANO</span> </p>
-<div class="highlight"><pre>    // Two &quot;vehicles&quot; follow the mouse position
+<div class="highlight"><pre>        <span class="c1">// BASED ON The Nature of Code</span>
+        <span class="c1">// ORIGINALY BY Daniel Shiffman</span>
+        <span class="c1">// http://natureofcode.com</span>
+        <span class="c1">// ADAPTED BY SERGIO UGALDE MARCANO </span>
 
-    // Implements Craig Reynold&#39;s autonomous steering behaviors
-    // One vehicle &quot;seeks&quot;
-    // One vehicle &quot;arrives&quot;
-    // See: http://www.red3d.com/cwr/
+        <span class="c1">// Two &quot;vehicles&quot; follow the mouse position</span>
 
-    Vehicle v;
-    PVector follow;
-    void setup() {
-      size(1000, 1000);
-      v = new Vehicle(width/2, height/2);
-      predict();
+        <span class="c1">// Implements Craig Reynold&#39;s autonomous steering behaviors</span>
+        <span class="c1">// One vehicle &quot;seeks&quot;</span>
+        <span class="c1">// One vehicle &quot;arrives&quot;</span>
+        <span class="c1">// See: http://www.red3d.com/cwr/</span>
 
-      //pixelDensity(2);
-    }
+        <span class="n">Vehicle</span> <span class="n">v</span><span class="o">;</span>
+        <span class="n">PVector</span> <span class="n">follow</span><span class="o">;</span>
+        <span class="kt">void</span> <span class="nf">setup</span><span class="o">()</span> <span class="o">{</span>
+          <span class="n">size</span><span class="o">(</span><span class="mi">1000</span><span class="o">,</span> <span class="mi">1000</span><span class="o">);</span>
+          <span class="n">v</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Vehicle</span><span class="o">(</span><span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="o">,</span> <span class="n">height</span><span class="o">/</span><span class="mi">2</span><span class="o">);</span>
+          <span class="n">predict</span><span class="o">();</span>
 
-    void predict(){
-        follow = PVector.add(v.velocity,v.location);
-      follow.add(v.velocity.mult(100));
-    }
+          <span class="c1">//pixelDensity(2);</span>
+        <span class="o">}</span>
 
-    void draw() {
-      background(255);
-      predict();
+        <span class="kt">void</span> <span class="nf">predict</span><span class="o">(){</span>
+            <span class="n">follow</span> <span class="o">=</span> <span class="n">PVector</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">velocity</span><span class="o">,</span><span class="n">v</span><span class="o">.</span><span class="na">location</span><span class="o">);</span>
+          <span class="n">follow</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">velocity</span><span class="o">.</span><span class="na">mult</span><span class="o">(</span><span class="mi">100</span><span class="o">));</span>
+        <span class="o">}</span>
 
-      // Draw an ellipse at the mouse location
-      fill(125);
-      stroke(0);
-      strokeWeight(2);
-      //ellipse(follow.x, follow.y, 48, 48);
-      v.display(follow.x, follow.y);
-      fill(125,0,0,50);
-      rect(0,0,width/3,height);
-      fill(0,125,0,50);
-      rect(width/3,0,2*width/3,height);
-      fill(125,125,0,50);
-      rect(2*width/3,0,width/3,height);
+        <span class="kt">void</span> <span class="nf">draw</span><span class="o">()</span> <span class="o">{</span>
+          <span class="n">background</span><span class="o">(</span><span class="mi">255</span><span class="o">);</span>
+          <span class="n">predict</span><span class="o">();</span>
 
-      // Call the appropriate steering behaviors for our agents
-      v.seek(follow);
-      v.update();
-      v.checkEdges();
-      fill(100);
-      v.display(v.location.x, v.location.y);
-    }
+          <span class="c1">// Draw an ellipse at the mouse location</span>
+          <span class="n">fill</span><span class="o">(</span><span class="mi">125</span><span class="o">);</span>
+          <span class="n">stroke</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+          <span class="n">strokeWeight</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+          <span class="c1">//ellipse(follow.x, follow.y, 48, 48);</span>
+          <span class="n">v</span><span class="o">.</span><span class="na">display</span><span class="o">(</span><span class="n">follow</span><span class="o">.</span><span class="na">x</span><span class="o">,</span> <span class="n">follow</span><span class="o">.</span><span class="na">y</span><span class="o">);</span>
+          <span class="n">fill</span><span class="o">(</span><span class="mi">125</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="mi">50</span><span class="o">);</span>
+          <span class="n">rect</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="n">width</span><span class="o">/</span><span class="mi">3</span><span class="o">,</span><span class="n">height</span><span class="o">);</span>
+          <span class="n">fill</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">125</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="mi">50</span><span class="o">);</span>
+          <span class="n">rect</span><span class="o">(</span><span class="n">width</span><span class="o">/</span><span class="mi">3</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="mi">2</span><span class="o">*</span><span class="n">width</span><span class="o">/</span><span class="mi">3</span><span class="o">,</span><span class="n">height</span><span class="o">);</span>
+          <span class="n">fill</span><span class="o">(</span><span class="mi">125</span><span class="o">,</span><span class="mi">125</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="mi">50</span><span class="o">);</span>
+          <span class="n">rect</span><span class="o">(</span><span class="mi">2</span><span class="o">*</span><span class="n">width</span><span class="o">/</span><span class="mi">3</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="n">width</span><span class="o">/</span><span class="mi">3</span><span class="o">,</span><span class="n">height</span><span class="o">);</span>
+
+          <span class="c1">// Call the appropriate steering behaviors for our agents</span>
+          <span class="n">v</span><span class="o">.</span><span class="na">seek</span><span class="o">(</span><span class="n">follow</span><span class="o">);</span>
+          <span class="n">v</span><span class="o">.</span><span class="na">update</span><span class="o">();</span>
+          <span class="n">v</span><span class="o">.</span><span class="na">checkEdges</span><span class="o">();</span>
+          <span class="n">fill</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+          <span class="n">v</span><span class="o">.</span><span class="na">display</span><span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">location</span><span class="o">.</span><span class="na">x</span><span class="o">,</span> <span class="n">v</span><span class="o">.</span><span class="na">location</span><span class="o">.</span><span class="na">y</span><span class="o">);</span>
+        <span class="o">}</span>
 </pre></div>
 
 
 <h3 id="vehicle-class">Vehicle&nbsp;Class</h3>
-<p>:::java
-        // <span class="caps">BASED</span> <span class="caps">ON</span> The Nature of Code
-        // <span class="caps">ORIGINALY</span> <span class="caps">BY</span> Daniel Shiffman
-        // http://natureofcode.com
-        // <span class="caps">ADAPTED</span> <span class="caps">BY</span> <span class="caps">SERGIO</span> <span class="caps">UGALDE</span> <span class="caps">MARCANO</span> </p>
-<div class="highlight"><pre>// Seek_Arrive
+<div class="highlight"><pre>        <span class="c1">// BASED ON The Nature of Code</span>
+        <span class="c1">// ORIGINALY BY Daniel Shiffman</span>
+        <span class="c1">// http://natureofcode.com</span>
+        <span class="c1">// ADAPTED BY SERGIO UGALDE MARCANO </span>
 
-// The &quot;Vehicle&quot; class
+    <span class="c1">// Seek_Arrive</span>
 
-class Vehicle {
+    <span class="c1">// The &quot;Vehicle&quot; class</span>
 
-  PVector location;
-  PVector velocity;
-  PVector acceleration;
-  float r;
-  float maxforce;    // Maximum steering force
-  float maxspeed;    // Maximum speed
+    <span class="kd">class</span> <span class="nc">Vehicle</span> <span class="o">{</span>
 
-  Vehicle(float x, float y) {
-    acceleration = new PVector(0,0);
-    velocity = new PVector(1,-2);
-    location = new PVector(x,y);
-    r = 6;
-    maxspeed = 3;
-    maxforce = 0.1;
-  }
+      <span class="n">PVector</span> <span class="n">location</span><span class="o">;</span>
+      <span class="n">PVector</span> <span class="n">velocity</span><span class="o">;</span>
+      <span class="n">PVector</span> <span class="n">acceleration</span><span class="o">;</span>
+      <span class="kt">float</span> <span class="n">r</span><span class="o">;</span>
+      <span class="kt">float</span> <span class="n">maxforce</span><span class="o">;</span>    <span class="c1">// Maximum steering force</span>
+      <span class="kt">float</span> <span class="n">maxspeed</span><span class="o">;</span>    <span class="c1">// Maximum speed</span>
 
-void calculate(){
-if (location.x&lt;=width/3){
-  maxspeed = 1;
-  maxforce = 0.01;
-} else if (location.x&lt;=2*width/3){
-  maxspeed = 3;
-    maxforce = 0.1;
-}else {
-     maxspeed = 5;
-  maxforce = 1;
-    }
+      <span class="n">Vehicle</span><span class="o">(</span><span class="kt">float</span> <span class="n">x</span><span class="o">,</span> <span class="kt">float</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">acceleration</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PVector</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+        <span class="n">velocity</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PVector</span><span class="o">(</span><span class="mi">1</span><span class="o">,-</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PVector</span><span class="o">(</span><span class="n">x</span><span class="o">,</span><span class="n">y</span><span class="o">);</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="mi">6</span><span class="o">;</span>
+        <span class="n">maxspeed</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+        <span class="n">maxforce</span> <span class="o">=</span> <span class="mf">0.1</span><span class="o">;</span>
+      <span class="o">}</span>
 
-}
-  // Method to update location
-  void update() {
-    calculate();
-    // Update velocity
-    velocity.add(acceleration);
-    // Limit speed
-    velocity.limit(maxspeed);
-    location.add(velocity);
-    // Reset accelerationelertion to 0 each cycle
-    acceleration.mult(0);
-  }
+    <span class="kt">void</span> <span class="nf">calculate</span><span class="o">(){</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">location</span><span class="o">.</span><span class="na">x</span><span class="o">&lt;=</span><span class="n">width</span><span class="o">/</span><span class="mi">3</span><span class="o">){</span>
+      <span class="n">maxspeed</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+      <span class="n">maxforce</span> <span class="o">=</span> <span class="mf">0.01</span><span class="o">;</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">location</span><span class="o">.</span><span class="na">x</span><span class="o">&lt;=</span><span class="mi">2</span><span class="o">*</span><span class="n">width</span><span class="o">/</span><span class="mi">3</span><span class="o">){</span>
+      <span class="n">maxspeed</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+        <span class="n">maxforce</span> <span class="o">=</span> <span class="mf">0.1</span><span class="o">;</span>
+    <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+         <span class="n">maxspeed</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+      <span class="n">maxforce</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="o">}</span>
 
-  void applyForce(PVector force) {
-    // We could add mass here if we want A = F / M
-    acceleration.add(force);
-  }
+    <span class="o">}</span>
+      <span class="c1">// Method to update location</span>
+      <span class="kt">void</span> <span class="nf">update</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">calculate</span><span class="o">();</span>
+        <span class="c1">// Update velocity</span>
+        <span class="n">velocity</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">acceleration</span><span class="o">);</span>
+        <span class="c1">// Limit speed</span>
+        <span class="n">velocity</span><span class="o">.</span><span class="na">limit</span><span class="o">(</span><span class="n">maxspeed</span><span class="o">);</span>
+        <span class="n">location</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">velocity</span><span class="o">);</span>
+        <span class="c1">// Reset accelerationelertion to 0 each cycle</span>
+        <span class="n">acceleration</span><span class="o">.</span><span class="na">mult</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+      <span class="o">}</span>
 
-  // A method that calculates a steering force towards a target
-  // STEER = DESIRED MINUS VELOCITY
-  void seek(PVector target) {
-    PVector desired = PVector.sub(target,location);  // A vector pointing from the location to the target
+      <span class="kt">void</span> <span class="nf">applyForce</span><span class="o">(</span><span class="n">PVector</span> <span class="n">force</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// We could add mass here if we want A = F / M</span>
+        <span class="n">acceleration</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">force</span><span class="o">);</span>
+      <span class="o">}</span>
 
-    // Scale to maximum speed
-    desired.setMag(maxspeed);
+      <span class="c1">// A method that calculates a steering force towards a target</span>
+      <span class="c1">// STEER = DESIRED MINUS VELOCITY</span>
+      <span class="kt">void</span> <span class="nf">seek</span><span class="o">(</span><span class="n">PVector</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">PVector</span> <span class="n">desired</span> <span class="o">=</span> <span class="n">PVector</span><span class="o">.</span><span class="na">sub</span><span class="o">(</span><span class="n">target</span><span class="o">,</span><span class="n">location</span><span class="o">);</span>  <span class="c1">// A vector pointing from the location to the target</span>
 
-    // Steering = Desired minus velocity
-    PVector steer = PVector.sub(desired,velocity);
-    steer.limit(maxforce);  // Limit to maximum steering force
+        <span class="c1">// Scale to maximum speed</span>
+        <span class="n">desired</span><span class="o">.</span><span class="na">setMag</span><span class="o">(</span><span class="n">maxspeed</span><span class="o">);</span>
 
-    applyForce(steer);
-  }
-  void checkEdges(){
-    if (location.x&gt;width)location.x=0;
-    if (location.y&gt;height)location.y=0;
-    if (location.x&lt;0)location.x=width;
-    if (location.y&lt;0)location.y=height;
-  }
-  void display(float x, float y) {
-    // Draw a triangle rotated in the direction of velocity
-    float theta = velocity.heading2D() + PI/2;
-    stroke(0);
-    strokeWeight(1);
-    pushMatrix();
-    translate(x,y);
-    rotate(theta);
-    beginShape();
-    vertex(0, -r*2);
-    vertex(-r, r*2);
-    vertex(r, r*2);
-    endShape(CLOSE);
-    popMatrix();
+        <span class="c1">// Steering = Desired minus velocity</span>
+        <span class="n">PVector</span> <span class="n">steer</span> <span class="o">=</span> <span class="n">PVector</span><span class="o">.</span><span class="na">sub</span><span class="o">(</span><span class="n">desired</span><span class="o">,</span><span class="n">velocity</span><span class="o">);</span>
+        <span class="n">steer</span><span class="o">.</span><span class="na">limit</span><span class="o">(</span><span class="n">maxforce</span><span class="o">);</span>  <span class="c1">// Limit to maximum steering force</span>
+
+        <span class="n">applyForce</span><span class="o">(</span><span class="n">steer</span><span class="o">);</span>
+      <span class="o">}</span>
+      <span class="kt">void</span> <span class="nf">checkEdges</span><span class="o">(){</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">location</span><span class="o">.</span><span class="na">x</span><span class="o">&gt;</span><span class="n">width</span><span class="o">)</span><span class="n">location</span><span class="o">.</span><span class="na">x</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">location</span><span class="o">.</span><span class="na">y</span><span class="o">&gt;</span><span class="n">height</span><span class="o">)</span><span class="n">location</span><span class="o">.</span><span class="na">y</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">location</span><span class="o">.</span><span class="na">x</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">)</span><span class="n">location</span><span class="o">.</span><span class="na">x</span><span class="o">=</span><span class="n">width</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">location</span><span class="o">.</span><span class="na">y</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">)</span><span class="n">location</span><span class="o">.</span><span class="na">y</span><span class="o">=</span><span class="n">height</span><span class="o">;</span>
+      <span class="o">}</span>
+      <span class="kt">void</span> <span class="nf">display</span><span class="o">(</span><span class="kt">float</span> <span class="n">x</span><span class="o">,</span> <span class="kt">float</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Draw a triangle rotated in the direction of velocity</span>
+        <span class="kt">float</span> <span class="n">theta</span> <span class="o">=</span> <span class="n">velocity</span><span class="o">.</span><span class="na">heading2D</span><span class="o">()</span> <span class="o">+</span> <span class="n">PI</span><span class="o">/</span><span class="mi">2</span><span class="o">;</span>
+        <span class="n">stroke</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+        <span class="n">strokeWeight</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">pushMatrix</span><span class="o">();</span>
+        <span class="n">translate</span><span class="o">(</span><span class="n">x</span><span class="o">,</span><span class="n">y</span><span class="o">);</span>
+        <span class="n">rotate</span><span class="o">(</span><span class="n">theta</span><span class="o">);</span>
+        <span class="n">beginShape</span><span class="o">();</span>
+        <span class="n">vertex</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">vertex</span><span class="o">(-</span><span class="n">r</span><span class="o">,</span> <span class="n">r</span><span class="o">*</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">vertex</span><span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="n">r</span><span class="o">*</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">endShape</span><span class="o">(</span><span class="n">CLOSE</span><span class="o">);</span>
+        <span class="n">popMatrix</span><span class="o">();</span>
 
 
-  }
-}
+      <span class="o">}</span>
+    <span class="o">}</span>
 </pre></div>
             </div>
             <!-- /.entry-content -->
