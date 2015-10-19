@@ -2,7 +2,7 @@
 <html lang="en"
 >
 <head>
-    <title>Authors - Computer Science Notes</title>
+    <title>Second (Sixth Chapter) Exercise - Computer Science Notes</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,15 +10,21 @@
 
 
 
+<link rel="canonical" href="./second-sixth-chapter-exercise.html">
 
         <meta name="author" content="Sergio Ugalde Marcano" />
+        <meta name="keywords" content="Fifth-Semester" />
+        <meta name="description" content="This program simulates an flock with varying properties." />
 
-    <!-- Open Graph tags -->
         <meta property="og:site_name" content="Computer Science Notes" />
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="Computer Science Notes"/>
-        <meta property="og:url" content="."/>
-        <meta property="og:description" content="Computer Science Notes"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Second (Sixth Chapter) Exercise"/>
+        <meta property="og:url" content="./second-sixth-chapter-exercise.html"/>
+        <meta property="og:description" content="This program simulates an flock with varying properties."/>
+        <meta property="article:published_time" content="2015-10-18" />
+            <meta property="article:section" content="Modelling" />
+            <meta property="article:tag" content="Fifth-Semester" />
+            <meta property="article:author" content="Sergio Ugalde Marcano" />
 
 
     <!-- Bootstrap -->
@@ -50,7 +56,7 @@ Computer Science Notes            </a>
                          <li><a href="./pages/about.html">
                              About
                           </a></li>
-                        <li >
+                        <li class="active">
                             <a href="./category/modelling.html">Modelling</a>
                         </li>
                         <li >
@@ -76,8 +82,81 @@ Computer Science Notes            </a>
     <div class="row">
         <div class="col-sm-9">
 
-    <h1>Authors on Computer Science Notes</h1>
-        <li><a href="./author/sergio-ugalde-marcano.html">Sergio Ugalde Marcano</a> (17)</li>
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="./second-sixth-chapter-exercise.html"
+                       rel="bookmark"
+                       title="Permalink to Second (Sixth Chapter) Exercise">
+                        Second (Sixth Chapter)&nbsp;Exercise
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2015-10-18T00:00:00-05:00"> Sun 18 October 2015</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="./tag/fifth-semester.html">Fifth-Semester</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h2 id="experience">Experience</h2>
+<p>The main modifications done in this program was the implementation the of the noise function. It was not really a big one, as only a few lines were modified. However, some refactoring had to be done in order for variables to be available in other scopes from the original ones. Originally, I intended to use sliders, but due to the disperse documentation and  time restraints I decided to go with Perlin Noise instead. In order to visualize the noise in a more significant way, the size of the objects vary acording to the ratio of cohesion to separation. However, this addition did not have an effect as evident as&nbsp;expected. </p>
+<h2 id="code">Code</h2>
+<p>(included only modifications)
+:::java
+    void calculate(){
+        beginNoise = 0.005<em>noiseStep++;
+        maxspeed = noise(beginNoise)</em>6;
+        maxforce = noise(beginNoise)<em>0.15;
+        sepw = noise(beginNoise)</em>4;
+        aliw = noise(beginNoise)<em>3;
+        cohw = noise(beginNoise)</em>3;
+        sep.mult(sepw);
+        ali.mult(aliw);
+        coh.mult(cohw);
+        println(&#8220;<span class="caps">SEPW</span>: &#8220;+sepw);&nbsp;}</p>
+<div class="highlight"><pre>      void render() {
+    // Draw a triangle rotated in the direction of velocity
+    float theta = velocity.heading2D() + radians(90);
+    fill(175);
+    stroke(0);
+    pushMatrix();
+    translate(location.x,location.y);
+    rotate(theta);
+    beginShape(TRIANGLES);
+    vertex(0*sepw/cohw, -r*2*sepw/cohw);
+    vertex(-r*sepw/cohw, r*2*sepw/cohw);
+    vertex(r*sepw/cohw, r*2*sepw/cohw);
+    endShape();
+    popMatrix();
+  }
+    void flock(ArrayList&lt;Boid&gt; boids) {
+    sep = separate(boids);   // Separation
+    ali = align(boids);      // Alignment
+    coh = cohesion(boids);   // Cohesion
+    // Arbitrarily weight these forces
+    calculate();
+    // Add the force vectors to acceleration
+    applyForce(sep);
+    applyForce(ali);
+    applyForce(coh);
+  }
+</pre></div>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
